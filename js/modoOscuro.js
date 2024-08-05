@@ -7,7 +7,7 @@ function darkTheme(btn, classDark) {
   let moon = "🌙",
     sun = "☀️";
 
-  $themeBtn.classList.add("dark-mode-btn"); // Agrega la clase al botón
+  $themeBtn.classList.add("dark-mode-btn"); 
 
   const lightMode = () => {
     $body.classList.remove(classDark);
@@ -31,7 +31,7 @@ function darkTheme(btn, classDark) {
     }
   });
 
-  // Load theme from local storage
+ 
   const theme = ls.getItem("theme");
   if (theme === "dark") {
     darkMode();
@@ -40,5 +40,5 @@ function darkTheme(btn, classDark) {
   }
 }
 
-// Llama a la función con los parámetros necesarios
+
 darkTheme("[data-dark='true']", "dark-mode");

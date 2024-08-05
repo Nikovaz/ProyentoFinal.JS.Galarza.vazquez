@@ -35,9 +35,9 @@ fetch('localidad.json')
 
       // Clase CalculadoraEnvio
       class CalculadoraEnvio {
-        static RADIO_TIERRA = 6371; // Radio de la Tierra en kilómetros
-        static COSTO_POR_KILOMETRO = 200; // Costo fijo por kilómetro
-        static COSTO_POR_PESO = 2500; // Costo por peso del paquete
+        static RADIO_TIERRA = 6371; 
+        static COSTO_POR_KILOMETRO = 200;
+        static COSTO_POR_PESO = 2500; 
 
         constructor(localidadOrigen, localidadDestino, pesoPaquete) {
           this.localidadOrigen = localidadOrigen;
@@ -76,7 +76,7 @@ fetch('localidad.json')
             const costoPorDistancia = CalculadoraEnvio.COSTO_POR_KILOMETRO * distancia;
             const costoEnvio = costoPorPeso + costoPorDistancia;
 
-            return costoEnvio; // Devolvemos el costo total
+            return costoEnvio; 
           } else {
             return null; // Localidades no encontradas
           }
