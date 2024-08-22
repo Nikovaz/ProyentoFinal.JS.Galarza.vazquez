@@ -1,6 +1,6 @@
 fetch('localidad.json')
- .then(response => response.json())
- .then(data => {
+  .then(response => response.json())
+  .then(data => {
     const localidades = data;
     const form = document.getElementById('cotizador-form');
     const origenSelect = document.getElementById('origen');
@@ -35,9 +35,9 @@ fetch('localidad.json')
 
       // Clase CalculadoraEnvio
       class CalculadoraEnvio {
-        static RADIO_TIERRA = 6371; 
+        static RADIO_TIERRA = 6371; // Radio de la Tierra en kilómetros
         static COSTO_POR_KILOMETRO = 200;
-        static COSTO_POR_PESO = 2500; 
+        static COSTO_POR_PESO = 2500; // Costo por kilogramo
 
         constructor(localidadOrigen, localidadDestino, pesoPaquete) {
           this.localidadOrigen = localidadOrigen;
@@ -76,7 +76,7 @@ fetch('localidad.json')
             const costoPorDistancia = CalculadoraEnvio.COSTO_POR_KILOMETRO * distancia;
             const costoEnvio = costoPorPeso + costoPorDistancia;
 
-            return costoEnvio; 
+            return costoEnvio; // Devuelve el costo de envío
           } else {
             return null; // Localidades no encontradas
           }
@@ -85,11 +85,48 @@ fetch('localidad.json')
 
       const calculadora = new CalculadoraEnvio(origen, destino, peso);
       const costoEnvio = calculadora.calcularCostoEnvio();
-
-      if (costoEnvio!== null) {
-        resultadoElement.innerHTML = `Costo de envío: $${costoEnvio.toFixed(2)}`;
+      if (costoEnvio !== null) {
+        Toastify({
+          text: `Costo de envío calculado: $${costoEnvio.toFixed(2)}`,
+          duration: 6000,
+          gravity: "center", // Cambia la gravedad a "center" para mostrar en el medio
+          position: "center", // Cambia la posición a "center" para mostrar en el medio
+          stopOnFocus: true,
+          style: {
+            background: "linear-gradient(to right, #00b09b, #96c93d)",
+          },
+          offsetY: 50, // Mueve el cartel 50px hacia abajo desde la parte superior
+          offsetX: 0, // No mueve el cartel hacia la derecha
+          className: "toast-large", // Agrega una clase CSS personalizada
+        }).showToast();
       } else {
         resultadoElement.innerHTML = 'Localidades no encontradas.';
+        Toastify({
+          text: "Localidades no encontradas.",
+          duration: 3000,
+          gravity: "center", // Cambia la gravedad a "center" para mostrar en el medio
+          position: "center", // Cambia la posición a "center" para mostrar en el medio
+          stopOnFocus: true,
+          style: {
+            background: "linear-gradient(to right, #ff5f6d, #ffc371)",
+          },
+          offsetY: 50, // Mueve el cartel 50px hacia abajo desde la parte superior
+          offsetX: 0, // No mueve el cartel hacia la derecha
+          className: "toast-large", // Agrega una clase CSS personalizada
+        }).showToast();
       }
     }
+  })
+  .catch(error => {
+    console.error('Error al cargar las localidades:', error);
+    Toastify({
+      text: "Error al cargar las localidades.",
+      duration: 3000,
+      gravity: "top",
+      position: "right",
+      stopOnFocus: true,
+      style: {
+        background: "linear-gradient(to right, #ff5f6d, #ffc371)",
+      },
+    }).showToast();
   });
