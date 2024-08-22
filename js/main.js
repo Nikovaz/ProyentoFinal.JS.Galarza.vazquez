@@ -20,7 +20,7 @@ fetch('localidad.json')
     form.addEventListener('submit', handleSubmit);
 
     function handleSubmit(event) {
-      event.preventDefault(); // Evita que el formulario se envíe
+      event.preventDefault();
 
       // Obtén los valores de los campos del formulario
       const origen = origenSelect.value;
@@ -33,11 +33,10 @@ fetch('localidad.json')
       const valorMercancia = document.getElementById('valor-mercancia').value;
       const valorComercial = document.querySelector('input[name="valor-comercial"]:checked').value;
 
-      // Clase CalculadoraEnvio
       class CalculadoraEnvio {
-        static RADIO_TIERRA = 6371; // Radio de la Tierra en kilómetros
+        static RADIO_TIERRA = 6371; 
         static COSTO_POR_KILOMETRO = 200;
-        static COSTO_POR_PESO = 2500; // Costo por kilogramo
+        static COSTO_POR_PESO = 2500; 
 
         constructor(localidadOrigen, localidadDestino, pesoPaquete) {
           this.localidadOrigen = localidadOrigen;
@@ -76,9 +75,9 @@ fetch('localidad.json')
             const costoPorDistancia = CalculadoraEnvio.COSTO_POR_KILOMETRO * distancia;
             const costoEnvio = costoPorPeso + costoPorDistancia;
 
-            return costoEnvio; // Devuelve el costo de envío
+            return costoEnvio; 
           } else {
-            return null; // Localidades no encontradas
+            return null;
           }
         }
       }
@@ -89,30 +88,30 @@ fetch('localidad.json')
         Toastify({
           text: `Costo de envío calculado: $${costoEnvio.toFixed(2)}`,
           duration: 6000,
-          gravity: "center", // Cambia la gravedad a "center" para mostrar en el medio
-          position: "center", // Cambia la posición a "center" para mostrar en el medio
+          gravity: "center", 
+          position: "center", 
           stopOnFocus: true,
           style: {
             background: "linear-gradient(to right, #00b09b, #96c93d)",
           },
-          offsetY: 50, // Mueve el cartel 50px hacia abajo desde la parte superior
-          offsetX: 0, // No mueve el cartel hacia la derecha
-          className: "toast-large", // Agrega una clase CSS personalizada
+          offsetY: 50, 
+          offsetX: 0, 
+          className: "toast-large", 
         }).showToast();
       } else {
         resultadoElement.innerHTML = 'Localidades no encontradas.';
         Toastify({
           text: "Localidades no encontradas.",
           duration: 3000,
-          gravity: "center", // Cambia la gravedad a "center" para mostrar en el medio
-          position: "center", // Cambia la posición a "center" para mostrar en el medio
+          gravity: "center", 
+          position: "center", 
           stopOnFocus: true,
           style: {
             background: "linear-gradient(to right, #ff5f6d, #ffc371)",
           },
-          offsetY: 50, // Mueve el cartel 50px hacia abajo desde la parte superior
-          offsetX: 0, // No mueve el cartel hacia la derecha
-          className: "toast-large", // Agrega una clase CSS personalizada
+          offsetY: 50, 
+          offsetX: 0, 
+          className: "toast-large", 
         }).showToast();
       }
     }

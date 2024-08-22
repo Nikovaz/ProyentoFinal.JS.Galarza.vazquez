@@ -8,10 +8,13 @@
     padding: 20px;
   }
 
-  h2 {
+  h1 {
     text-align: center;
-    margin-bottom: 20px;
+    margin: auto;
+    padding: auto;
+    font-size: 64px; 
   }
+  
 
   .form-group {
     margin-bottom: 15px;
