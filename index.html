@@ -6,7 +6,6 @@
     <title>Cotizador</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-
 </head>
 <body>
     <div class="container">
@@ -16,38 +15,37 @@
                 <label for="origen">Origen:</label>
                 <select id="origen" name="origen">
                     <option value="">Seleccione uno</option>
-                    </select>
+                </select>
             </div>
             <div class="form-group">
                 <label for="destino">Destino:</label>
                 <select id="destino" name="destino">
                     <option value="">Seleccione uno</option>
-                    </select>
+                </select>
             </div>
             <div class="form-group">
                 <label for="bultos">Bultos:</label>
-                <input type="text" id="bultos" name="bultos">
+                <input type="text" id="bultos" name="bultos" pattern="[0-9]*" title="Solo números">
             </div>
             <div class="form-group">
                 <label for="peso">Peso (Kg):</label>
-                <input type="text" id="peso" name="peso">
+                <input type="text" id="peso" name="peso" pattern="[0-9]*" title="Solo números">
             </div>
             <div class="form-group">
                 <label for="largo">Largo (cms):</label>
-                <input type="text" id="largo" name="largo">
+                <input type="text" id="largo" name="largo" pattern="[0-9]*" title="Solo números">
             </div>
             <div class="form-group">
                 <label for="alto">Alto (cms):</label>
-                <input type="text" id="alto" name="alto">
+                <input type="text" id="alto" name="alto" pattern="[0-9]*" title="Solo números">
             </div>
             <div class="form-group">
                 <label for="ancho">Ancho (cms):</label>
-                <input type="text" id="ancho" name="ancho">
+                <input type="text" id="ancho" name="ancho" pattern="[0-9]*" title="Solo números">
             </div>
-        
             <div class="form-group">
                 <label for="valor-mercancia">Valor mercancía:</label>
-                <input type="text" id="valor-mercancia" name="valor-mercancia">
+                <input type="text" id="valor-mercancia" name="valor-mercancia" pattern="[0-9]*" title="Solo números">
             </div>
             <div class="form-group">
                 <label>¿Desea adicionar el valor comercial de la mercancía?</label>
@@ -60,16 +58,30 @@
                 <button type="submit">Cotizar</button>
                 <button type="reset">Limpiar</button>
             </div>
-            
         </form>
+        <table id="cotizacion-table">
+            <thead>
+                <tr>
+                    <th>Origen</th>
+                    <th>Destino</th>
+                    <th>Bultos</th>
+                    <th>Peso (Kg)</th>
+                    <th>Largo (cms)</th>
+                    <th>Alto (cms)</th>
+                    <th>Ancho (cms)</th>
+                    <th>Valor Mercancía</th>
+                    <th>Cotización</th>
+                </tr>
+            </thead>
+            <tbody id="cotizacion-body">
+                <!-- datos de la cotización se mostrarán aquí -->
+            </tbody>
+        </table>
         <div id="resultado"></div>
         <button data-dark="true">Activar/Desactivar Modo Oscuro</button>
     </div>
- 
-
     <script src="js/modoOscuro.js"></script>
     <script type="module" src="js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-
 </body>
 </html>
